@@ -7,7 +7,7 @@ const TOKEN = process.env.TOKEN;
     
     const postbutton = document.getElementById('post-btn');
     postbutton.addEventListener('click', async _ => {
-        console.log(TOKEN);
+        console.log('Inside Post');
         
         try {
             axios.post(
