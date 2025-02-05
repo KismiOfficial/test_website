@@ -40,13 +40,14 @@ const TOKEN = process.env.TOKEN;
         
         try {
             axios.post(
-              'https://api.hubapi.com/crm/v3/objects/contacts',
+              'https://test-website-seven-bice.vercel.app/api/sendToHubspot',
               {
                 headers: {
-                    Authorization: `Bearer ${TOKEN}`,
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                    
+                  'Content-Type': 'application/json',
+                  'Access-Control-Allow-Origin': '*',
+                  'Access-Control-Allow-Credentials': 'true',
+                  'Access-Control-Allow-Methods': '*',
+                  'Access-Control-Allow-Headers': '*',
                 },
                 body: {
                     "properties": {
@@ -72,11 +73,14 @@ const TOKEN = process.env.TOKEN;
       console.log('Inside Get');
       try{
       const response = await axios.get(
-        'https://api.hubapi.com/crm/v3/objects/contacts',
+        'https://test-website-seven-bice.vercel.app/api/sendToHubspot',
         {
           headers: {
-            Authorization: `Bearer ${YOUR_TOKEN}`,
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': 'true',
+            'Access-Control-Allow-Methods': '*',
+            'Access-Control-Allow-Headers': '*',
           },
         },
       );
