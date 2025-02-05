@@ -17,6 +17,7 @@ const TOKEN = process.env.TOKEN;
                     Authorization: `Bearer ${TOKEN}`,
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*',
+                    
                 },
                 body: {
                     "properties": {
@@ -50,6 +51,7 @@ const TOKEN = process.env.TOKEN;
 
         fetch('https://test-website-seven-bice.vercel.app/api/sendToHubspot', {
           method: 'POST',
+          mode: 'no-cors',
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
