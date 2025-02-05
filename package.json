@@ -1,11 +1,11 @@
 {
   "name": "test_website",
+  "source": "index.html",
   "version": "1.0.0",
-  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "parcel index.html",
-    "build": "parcel build index.html"
+    "start": "parcel",
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
