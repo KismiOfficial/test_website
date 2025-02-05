@@ -27,6 +27,7 @@ module.exports = async (req, res) => {
         headers: {
             Authorization: `Bearer ${TOKEN}`,
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
         }
       });
 
