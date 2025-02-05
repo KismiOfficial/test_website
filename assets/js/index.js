@@ -14,8 +14,9 @@ const TOKEN = process.env.TOKEN;
               'https://api.hubapi.com/crm/v3/objects/contacts',
               {
                 headers: {
-                  Authorization: `Bearer ${TOKEN}`,
-                  'Content-Type': 'application/json',
+                    Authorization: `Bearer ${TOKEN}`,
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
                 },
                 body: {
                     "properties": {
@@ -50,7 +51,8 @@ const TOKEN = process.env.TOKEN;
         fetch('https://test-website-seven-bice.vercel.app/api/sendToHubspot', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
           },
           body: JSON.stringify(data)
         })
