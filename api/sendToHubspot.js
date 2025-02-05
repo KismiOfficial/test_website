@@ -13,11 +13,9 @@ module.exports = async (req, res) => {
       // HubSpot API endpoint and API key
       const url = 'https://api.hubapi.com/crm/v3/objects/contacts';
       const data = {
-        properties: [
-          { property: 'email', value: 'email@example.com' },
-          { property: 'firstname', value: 'John' },
-          { property: 'lastname', value: 'Doe' }
-        ]
+          email: 'email@example.com',
+          firstname: 'John',
+          lastname: 'Doe'
       };
       console.log('Data: '+data.toString);
       // Make the POST request to HubSpot
