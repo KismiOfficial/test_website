@@ -51,7 +51,6 @@ const TOKEN = process.env.TOKEN;
 
         fetch('https://test-website-seven-bice.vercel.app/api/sendToHubspot', {
           method: 'POST',
-          mode: 'no-cors',
           headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
