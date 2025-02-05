@@ -5,12 +5,18 @@ const axios = require('axios');
 const TOKEN = process.env.TOKEN;
 
 module.exports = async (req, res) => {
+  console.log('Start: '+req.method);
   // Only allow POST requests
-  if (req.method === 'POST') {
+//  if (req.method === 'POST') {
     try {
       // Extract data from the request body
+      console.log('Req: '+req.body);
       const { email, firstname, lastname, phone } = req.body;
-
+        console.log('email: '+email);
+        console.log('first: '+firstname);
+        console.log('last: '+lastname);
+        console.log('phone: '+phone);
+        
       // HubSpot API endpoint and API key
       const url = 'https://api.hubapi.com/crm/v3/objects/contacts';
       const data = {
@@ -37,8 +43,8 @@ module.exports = async (req, res) => {
       console.error(error);
       res.status(500).json({ error: 'Something went wrong with the API call' });
     }
-  } else {
+//  } else {
     // If the request method isn't POST, return a 405 error
-    res.status(405).json({ error: 'Method Not Allowed'+req.method });
-  }
+//    res.status(405).json({ error: 'Method Not Allowed' });
+//  }
 };
