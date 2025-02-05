@@ -39,6 +39,6 @@ module.exports = async (req, res) => {
     }
   } else {
     // If the request method isn't POST, return a 405 error
-    res.status(405).json({ error: 'Method Not Allowed' });
+    res.status(405).json({ error: 'Method Not Allowed'+req.method });
   }
 };
