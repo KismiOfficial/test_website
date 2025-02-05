@@ -40,21 +40,27 @@ const TOKEN = process.env.TOKEN;
     getbutton.addEventListener('click', async _ => {
         console.log('Inside Get');
 
-        axios.get(
-            'https://api.hubapi.com/crm/v3/objects/contacts',
-            {
-             headers: {
-              Authorization: `Bearer ${TOKEN}`,
-              'Content-Type': 'application/json',
-            }
-            },
-            (err, data) => {
-            // Handle the API response
-              console.log("Error: "+err);
-              console.log("Data: "+data);
-            }
-        );
-        console.log('After Get');
+        const data = {
+          email: 'email@example.com',
+          firstname: 'John',
+          lastname: 'Doe',
+          phone: '123-456-7890'
+        };
+
+        fetch('https://test-website-seven-bice.vercel.app/api/sendToHubspot', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Success:', data);
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
     });
     
 })();
