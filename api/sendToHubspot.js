@@ -13,9 +13,12 @@ module.exports = async (req, res) => {
       // HubSpot API endpoint and API key
       const url = 'https://api.hubapi.com/crm/v3/objects/contacts';
       const data = {
-          email: 'email@example.com',
-          firstname: 'John',
-          lastname: 'Doe'
+        "properties": {
+          "email": "example@hubspot.com",
+          "firstname": "Jane",
+          "lastname": "Doe",
+          "phone": "(555) 555-5555"
+        }
       };
 
       // Make the POST request to HubSpot
@@ -40,7 +43,7 @@ module.exports = async (req, res) => {
         'https://api.hubapi.com/crm/v3/objects/contacts',
         {
           headers: {
-            Authorization: `Bearer ${YOUR_TOKEN}`,
+            Authorization: `Bearer ${TOKEN}`,
             'Content-Type': 'application/json',
           },
         },

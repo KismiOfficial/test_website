@@ -58,8 +58,8 @@ const TOKEN = process.env.TOKEN;
                 }
               },
               (err, data) => {
-                console.log("Error: "+err);
-                console.log("Data: "+data);
+                console.log("Error:", err);
+                console.log('Data:', data);
               }
             );
             console.log('After Test');
