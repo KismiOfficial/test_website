@@ -7,41 +7,6 @@ const TOKEN = process.env.TOKEN;
     
     const postbutton = document.getElementById('post-btn');
     postbutton.addEventListener('click', async _ => {
-        console.log('Inside Post');
-        
-        try {
-            axios.post(
-              'https://api.hubapi.com/crm/v3/objects/contacts',
-              {
-                headers: {
-                    Authorization: `Bearer ${TOKEN}`,
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                    
-                },
-                body: {
-                    "properties": {
-                        "email": "testuseremail@gmail.com",
-                        "firstname": "John",
-                        "lastname": "Smith"
-                    }
-                }
-              },
-              (err, data) => {
-                console.log("Error: "+err);
-                console.log("Data: "+data);
-              }
-            );
-            console.log('After Post');
-            } catch (e) {
-                console.log(e);
-            }
-    });
-    
-    const getbutton = document.getElementById('get-btn');
-    getbutton.addEventListener('click', async _ => {
-        console.log('Inside Get');
-
         const data = {
           email: 'email@example.com',
           firstname: 'John',
@@ -67,6 +32,60 @@ const TOKEN = process.env.TOKEN;
           .catch((error) => {
             console.error('Error:', error);
           });
+    });
+  
+    const testbutton = document.getElementById('test-btn');
+    testbutton.addEventListener('click', async _ => {
+      console.log('Inside Test');
+        
+        try {
+            axios.post(
+              'https://api.hubapi.com/crm/v3/objects/contacts',
+              {
+                headers: {
+                    Authorization: `Bearer ${TOKEN}`,
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    
+                },
+                body: {
+                    "properties": {
+                        "email": "testuseremail@gmail.com",
+                        "firstname": "John",
+                        "lastname": "Smith"
+                    }
+                }
+              },
+              (err, data) => {
+                console.log("Error: "+err);
+                console.log("Data: "+data);
+              }
+            );
+            console.log('After Test');
+            } catch (e) {
+                console.log(e);
+            }
+    });
+    
+    const getbutton = document.getElementById('get-btn');
+    getbutton.addEventListener('click', async _ => {
+      console.log('Inside Get');
+      try{
+      const response = await axios.get(
+        'https://api.hubapi.com/crm/v3/objects/contacts',
+        {
+          headers: {
+            Authorization: `Bearer ${YOUR_TOKEN}`,
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+      res.status(200).json(response.data);
+      } catch(error) {
+        console.error(error);
+        res.status(500).json({ error: 'Something went wrong with the API call' });
+      }
+        
     });
     
 })();
