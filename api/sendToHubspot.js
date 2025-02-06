@@ -6,7 +6,8 @@ const TOKEN = process.env.TOKEN;
 
 module.exports = async (req, res) => {
   
-  console.log('Req: ',req.method);
+  console.log('Req: ', req.method);
+  console.log('Req Body: ', req.body);
   // Only allow POST requests
   if (req.method === 'POST') {
     try {
