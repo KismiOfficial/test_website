@@ -5,6 +5,14 @@ import axios from 'axios';
     
     const postbutton = document.getElementById('post-btn');
     postbutton.addEventListener('click', async _ => {
+      console.log('Inside Post');
+      
+        const data = {
+          email: 'email@example.com',
+          firstname: 'John',
+          lastname: 'Doe',
+          phone: '123-456-7890'
+        };
       
         fetch('https://test-website-seven-bice.vercel.app/api/sendToHubspot', {
           method: 'POST',
@@ -15,14 +23,7 @@ import axios from 'axios';
             'Access-Control-Allow-Methods': '*',
             'Access-Control-Allow-Headers': '*',
           },
-          body: {
-            "properties": {
-              "email": "example@hubspot.com",
-              "firstname": "Martin",
-              "lastname": "Smith",
-              "phone": "(555) 555-5555"
-            }
-          }
+          body: JSON.stringify(data)
         })
           .then(response => response.json())
           .then(data => {
@@ -32,39 +33,36 @@ import axios from 'axios';
             console.error('Error:', error);
           });
     });
-  
+        
     const testbutton = document.getElementById('test-btn');
     testbutton.addEventListener('click', async _ => {
-      console.log('Start of Test');
-      try {
-        
-        // Vercel API endpoint
-        const url = 'https://test-website-seven-bice.vercel.app/api/sendToHubspot';
+      console.log('Inside Test');
+      
         const data = {
-          "properties": {
-            "email": "example@hubspot.com",
-            "firstname": "Martin",
-            "lastname": "Smith",
-            "phone": "(555) 555-5555"
-          }
+          email: 'email@example.com',
+          firstname: 'John',
+          lastname: 'Doe',
+          phone: '123-456-7890'
         };
-        console.log("Data: ", data);
-        // Make the POST request to Vercel
-        const response = await axios.post(url, data, {
+      
+        fetch('https://test-website-seven-bice.vercel.app/api/sendToHubspot', {
+          method: 'POST',
           headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
-              'Access-Control-Allow-Credentials': 'true',
-              'Access-Control-Allow-Methods': '*',
-              'Access-Control-Allow-Headers': '*',
-          }
-        });
-        
-        // Return the HubSpot response to the client
-        console.log("End of Test: ", json(response.data));
-      } catch (error) {
-        console.log(error);
-      }
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': 'true',
+            'Access-Control-Allow-Methods': '*',
+            'Access-Control-Allow-Headers': '*',
+          },
+          body: JSON.stringify(data)
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Success:', data);
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
     });
     
     const getbutton = document.getElementById('get-btn');
