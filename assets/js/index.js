@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const TOKEN = process.env.TOKEN;
-
 (function() {
     console.log('Start');
     
@@ -50,7 +48,7 @@ const TOKEN = process.env.TOKEN;
             "phone": "(555) 555-5555"
           }
         };
-        console.log("Data: "+data);
+        console.log("Data: ", data);
         // Make the POST request to Vercel
         const response = await axios.post(url, data, {
           headers: {
@@ -63,10 +61,9 @@ const TOKEN = process.env.TOKEN;
         });
         
         // Return the HubSpot response to the client
-        res.status(200).json(response.data);
+        console.log("End of Test: ", json(response.data));
       } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Something went wrong with the API call' });
+        console.log(error);
       }
     });
     
