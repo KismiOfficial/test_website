@@ -25,7 +25,9 @@ import axios from 'axios';
           },
           body: JSON.stringify(data)
         })
-          .then(response => response.json())
+          .then(response => {
+            console.log("Response: ", response);
+          })
           .then(data => {
             console.log('Success:', data);
           })
