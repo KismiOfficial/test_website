@@ -44,14 +44,14 @@ module.exports = async (req, res) => {
   } else if (req.method === 'GET') {
     try{
       const url = 'https://api.hubapi.com/crm/v3/objects/contacts';
-      const data = {};
-      const response = await axios.get(url, data, {
+      const response = await axios.get(url, {
         headers: {
             Authorization: `Bearer ${TOKEN}`,
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
         }
       });
+
       console.log('Response: ', response.data);
       res.status(200).json(response.data);
     } catch (error) {
