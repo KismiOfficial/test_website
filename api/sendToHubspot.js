@@ -4,8 +4,8 @@ const axios = require('axios');
 
 const TOKEN = process.env.TOKEN;
 
-export default async function handler(req, res) {
-//module.exports = async (req, res) => {
+module.exports = async (req, res) => {
+  
   console.log('Req: ',req.method);
   // Only allow POST requests
   if (req.method === 'POST') {
@@ -38,6 +38,7 @@ export default async function handler(req, res) {
       console.log("Error: ", error.response);
       console.error(error);
       res.status(500).json({ error: 'Something went wrong with the API call' });
+      return "Test Error Message Back";
     }
   } else if (req.method === 'GET') {
     
@@ -50,5 +51,4 @@ export default async function handler(req, res) {
     // If the request method isn't POST, return a 405 error
     res.status(405).json({ error: 'Method Not Allowed' });
   }
-}
-//};
+};
