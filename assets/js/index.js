@@ -65,7 +65,7 @@ import axios from 'axios';
       
         const responseData = await response.json();
         console.log("Response Data: ", responseData);
-        messageField.textContent="Current Member Data: "+responseData.stringify();
+        messageField.textContent="Current Member Data: "+responseData;
       } catch (error) {
         console.error('Error submitting form:', error);
         messageField.textContent = 'An error occurred while submitting the form.';
