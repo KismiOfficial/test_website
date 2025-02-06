@@ -14,7 +14,7 @@ import axios from 'axios';
           phone: '123-456-7890'
         };
       
-        var responseData = "";
+        let responseData;
         fetch('https://test-website-seven-bice.vercel.app/api/sendToHubspot', {
           method: 'POST',
           headers: {
