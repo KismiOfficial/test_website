@@ -29,7 +29,7 @@ import axios from 'axios';
         })
 //          .then(response => response.json())
           .then(response => {
-            messageField.textContent=response.json();
+            messageField.textContent=response;
             console.log("Response: ", response);
           })
           .then(data => {
@@ -42,7 +42,7 @@ import axios from 'axios';
         
     const testbutton = document.getElementById('test-btn');
     testbutton.addEventListener('click', async _ => {
-      console.log('Inside Test');
+      console.log('Inside Post');
       
         const data = {
           email: 'email@example.com',
@@ -51,7 +51,7 @@ import axios from 'axios';
           phone: '123-456-7890'
         };
       
-        fetch('https://test-website-seven-bice.vercel.app/api/sendToHubspot', {
+        const response = await fetch('https://test-website-seven-bice.vercel.app/api/sendToHubspot', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -61,14 +61,10 @@ import axios from 'axios';
             'Access-Control-Allow-Headers': '*',
           },
           body: JSON.stringify(data)
-        })
-          .then(response => response.json())
-          .then(data => {
-            console.log('Success:', data);
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
+        });
+        
+        const responseData = await response.json();
+        console.log("Response Data: ",responseData);
     });
     
     const getbutton = document.getElementById('get-btn');
