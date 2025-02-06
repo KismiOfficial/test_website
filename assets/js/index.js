@@ -25,11 +25,13 @@ import axios from 'axios';
           },
           body: JSON.stringify(data)
         })
+//          .then(response => response.json())
           .then(response => {
+            response.json();
             console.log("Response: ", response);
           })
           .then(data => {
-            console.log('Success:', data);
+            console.log('Data:', data);
           })
           .catch((error) => {
             console.error('Error:', error);
