@@ -5,9 +5,9 @@ const axios = require('axios');
 const TOKEN = process.env.TOKEN;
 
 module.exports = async (req, res) => {
-  console.log('Req: '+req.method);
-  // Only allow POST requests
-//  if (req.method === 'POST') {
+  console.log('Req: ',req.method);
+
+  if (req.method === 'POST') {
     try {
         
       // HubSpot API endpoint and API key
@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
           firstname: 'Martin',
           lastname: 'Doe'
       };
-      console.log('Data: '+data.toString);
+      console.log('Data: ',data);
       // Make the POST request to HubSpot
       const response = await axios.post(url, data, {
         headers: {
@@ -33,8 +33,10 @@ module.exports = async (req, res) => {
       console.error(error);
       res.status(500).json({ error: 'Something went wrong with the API call' });
     }
-//  } else {
+  } else if (req.method === 'OPTIONS') {
+    res.status(200).json({ message: 'Options Method' });
+  } else {
     // If the request method isn't POST, return a 405 error
-//    res.status(405).json({ error: 'Method Not Allowed' });
-//  }
+    res.status(405).json({ error: 'Method Not Allowed' });
+  }
 };
