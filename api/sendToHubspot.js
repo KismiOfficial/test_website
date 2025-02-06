@@ -7,7 +7,7 @@ const TOKEN = process.env.TOKEN;
 module.exports = async (req, res) => {
   console.log('Req: ',req.method);
   // Only allow POST requests
-//  if (req.method === 'POST') {
+  if (req.method === 'POST') {
     try {
         
       // HubSpot API endpoint and API key
@@ -15,7 +15,7 @@ module.exports = async (req, res) => {
       const data = {
         "properties": {
           "email": "martinsmith@hubspot.com",
-          "firstname": "Martin",
+          "firstname": "Test",
           "lastname": "Smith",
           "phone": "(555) 555-5555"
         }
@@ -37,8 +37,15 @@ module.exports = async (req, res) => {
       console.error(error);
       res.status(500).json({ error: 'Something went wrong with the API call' });
     }
-//  } else {
+  } else if (req.method === 'GET') {
+    
+  } else if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.status(200);
+  } else {
     // If the request method isn't POST, return a 405 error
-//    res.status(405).json({ error: 'Method Not Allowed' });
-//  }
+    res.status(405).json({ error: 'Method Not Allowed' });
+  }
 };
