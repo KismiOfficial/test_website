@@ -8,11 +8,13 @@ module.exports = async (req, res) => {
   console.log('Req Method: '+req.method);
 
   if (req.method === 'POST') {
-        try {
-        
+    try {
+      const body = req.body;
       // HubSpot API endpoint and API key
       const url = 'https://api.hubapi.com/crm/v3/objects/contacts';
-      const data = req.body;
+      const data = {
+        "properties": { body }
+      };
       
       // Make the POST request to HubSpot
       const response = await axios.post(url, data, {
@@ -28,6 +30,7 @@ module.exports = async (req, res) => {
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Something went wrong with the API call' });
+      return req.body;
     }
     //try {
     //    
