@@ -44,6 +44,8 @@ import axios from 'axios';
     testbutton.addEventListener('click', async _ => {
       console.log('Inside Post');
       
+      try{
+      
         const data = {
           email: 'email@example.com',
           firstname: 'John',
@@ -64,7 +66,14 @@ import axios from 'axios';
         });
         
         const responseData = await response.json();
-        console.log("Response Data: ",responseData);
+        console.log("Response Data: ", responseData);
+        if(responseData.message === 'Conflict'){
+          messageField.textContent = 'That user is already in the member database';
+        }
+      } catch (error){
+        console.error('Error submitting form:', error);
+        messageField.textContent = 'An error occurred while submitting the form.';
+      }
     });
     
     const getbutton = document.getElementById('get-btn');

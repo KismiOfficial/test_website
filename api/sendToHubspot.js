@@ -38,13 +38,11 @@ module.exports = async (req, res) => {
       console.log("Error: ", error.response);
       if(error.response.status === 409){
         //Conflict error, user already exists in the database
-        console.log("Conflict Issue", error.response.status);
-        res.status(409).json({ message: 'Conflict Issue' });
-        return "Conflict Message Back";
+        console.log("Conflict", error.response.status);
+        res.status(409).json({ message: 'Conflict' });
       } else {
         console.error(error);
         res.status(500).json({ error: 'Something went wrong with the API call' });
-        return "Error Message Back";
       }
     }
   } else if (req.method === 'GET') {
