@@ -2,6 +2,8 @@ import axios from 'axios';
 
 (function() {
     console.log('Start');
+  
+    const messageField = document.getElementById('message');
     
     const postbutton = document.getElementById('post-btn');
     postbutton.addEventListener('click', async _ => {
@@ -14,7 +16,6 @@ import axios from 'axios';
           phone: '123-456-7890'
         };
       
-        let responseData;
         fetch('https://test-website-seven-bice.vercel.app/api/sendToHubspot', {
           method: 'POST',
           headers: {
@@ -28,7 +29,7 @@ import axios from 'axios';
         })
 //          .then(response => response.json())
           .then(response => {
-            responseData = response.json();
+            messageField.textContent=response.json();
             console.log("Response: ", response);
           })
           .then(data => {
@@ -37,8 +38,6 @@ import axios from 'axios';
           .catch((error) => {
             console.error('Error:', error);
           });
-        console.log("ResponseData: ", responseData);
-        console.log("Response Status: ", responseData.status);
     });
         
     const testbutton = document.getElementById('test-btn');
