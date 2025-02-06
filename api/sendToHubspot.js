@@ -6,15 +6,15 @@ const TOKEN = process.env.TOKEN;
 
 module.exports = async (req, res) => {
   console.log('Req: ',req.method);
-
-  if (req.method === 'POST') {
+  // Only allow POST requests
+//  if (req.method === 'POST') {
     try {
         
       // HubSpot API endpoint and API key
       const url = 'https://api.hubapi.com/crm/v3/objects/contacts';
       const data = {
-          email: 'martindoe@example.com',
-          firstname: 'Martin',
+          email: 'email@example.com',
+          firstname: 'John',
           lastname: 'Doe'
       };
       console.log('Data: ',data);
@@ -33,10 +33,8 @@ module.exports = async (req, res) => {
       console.error(error);
       res.status(500).json({ error: 'Something went wrong with the API call' });
     }
-  } else if (req.method === 'OPTIONS') {
-    res.status(200).json({ message: 'Options Method' });
-  } else {
+//  } else {
     // If the request method isn't POST, return a 405 error
-    res.status(405).json({ error: 'Method Not Allowed' });
-  }
+//    res.status(405).json({ error: 'Method Not Allowed' });
+//  }
 };
