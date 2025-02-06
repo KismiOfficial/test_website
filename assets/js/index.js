@@ -37,37 +37,37 @@ const TOKEN = process.env.TOKEN;
   
     const testbutton = document.getElementById('test-btn');
     testbutton.addEventListener('click', async _ => {
-      console.log('Inside Test');
+      console.log('Start of Test');
+      try {
         
-        try {
-            axios.post(
-              'https://test-website-seven-bice.vercel.app/api/sendToHubspot',
-              {
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Access-Control-Allow-Origin': '*',
-                  'Access-Control-Allow-Credentials': 'true',
-                  'Access-Control-Allow-Methods': '*',
-                  'Access-Control-Allow-Headers': '*',
-                },
-                body: {
-                    "properties": {
-                      "email": "example@hubspot.com",
-                      "firstname": "John",
-                      "lastname": "Doe",
-                      "phone": "(555) 555-5555",
-                    }
-                }
-              },
-              (err, data) => {
-                console.log("Error:", err);
-                console.log('Data:', data);
-              }
-            );
-            console.log('After Test');
-            } catch (e) {
-                console.log(e);
-            }
+        // Vercel API endpoint
+        const url = 'https://test-website-seven-bice.vercel.app/api/sendToHubspot';
+        const data = {
+          "properties": {
+            "email": "example@hubspot.com",
+            "firstname": "Martin",
+            "lastname": "Smith",
+            "phone": "(555) 555-5555"
+          }
+        };
+        console.log("Data: "+data);
+        // Make the POST request to Vercel
+        const response = await axios.post(url, data, {
+          headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Credentials': 'true',
+              'Access-Control-Allow-Methods': '*',
+              'Access-Control-Allow-Headers': '*',
+          }
+        });
+        
+        // Return the HubSpot response to the client
+        res.status(200).json(response.data);
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Something went wrong with the API call' });
+      }
     });
     
     const getbutton = document.getElementById('get-btn');

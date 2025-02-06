@@ -6,33 +6,37 @@ const TOKEN = process.env.TOKEN;
 
 module.exports = async (req, res) => {
   console.log('Req Method: '+req.method);
-
+  console.log('Req Body: '+req.body);
   if (req.method === 'POST') {
-    fetch('https://test-website-seven-bice.vercel.app/api/sendToHubspot', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': 'true',
-        'Access-Control-Allow-Methods': '*',
-        'Access-Control-Allow-Headers': '*',
-      },
-        body: {
-          "properties": {
-            "email": "example@hubspot.com",
-            "firstname": "Martin",
-            "lastname": "Smith",
-            "phone": "(555) 555-5555"
-          }
+    try {
+        
+      // HubSpot API endpoint and API key
+      const url = 'https://api.hubapi.com/crm/v3/objects/contacts';
+      const data = {
+        "properties": {
+          "email": "example@hubspot.com",
+          "firstname": "Martin",
+          "lastname": "Doe",
+          "phone": "(555) 555-5555"
         }
-      })
-        .then(response => response.json())
-        .then(data => {
-          console.log('Success:', data);
-        })
-        .catch((error) => {
-        console.error('Error:', error);
-    });
+      };
+      console.log('Data: '+data);
+      
+      // Make the POST request to HubSpot
+      const response = await axios.post(url, data, {
+        headers: {
+            Authorization: `Bearer ${TOKEN}`,
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+        }
+      });
+      
+      // Return the HubSpot response to the client
+      res.status(200).json(response.data);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Something went wrong with the API call' });
+    }
     
     //try {
     //    
