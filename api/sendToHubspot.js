@@ -15,7 +15,7 @@ module.exports = async (req, res) => {
       const data = {
         "properties": {
           "email": "martinsmith@hubspot.com",
-          "firstname": "Test",
+          "firstname": "Martin",
           "lastname": "Smith",
           "phone": "(555) 555-5555"
         }
@@ -40,9 +40,9 @@ module.exports = async (req, res) => {
   } else if (req.method === 'GET') {
     
   } else if (req.method === 'OPTIONS') {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Allow all domains (use a specific domain in production for better security)
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS'); // Allow these methods
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allow these headers
     res.status(200);
   } else {
     // If the request method isn't POST, return a 405 error
