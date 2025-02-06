@@ -14,6 +14,7 @@ import axios from 'axios';
           phone: '123-456-7890'
         };
       
+        var responseData = "";
         fetch('https://test-website-seven-bice.vercel.app/api/sendToHubspot', {
           method: 'POST',
           headers: {
@@ -27,7 +28,7 @@ import axios from 'axios';
         })
 //          .then(response => response.json())
           .then(response => {
-            response.json();
+            responseData = response.json();
             console.log("Response: ", response);
           })
           .then(data => {
@@ -36,6 +37,8 @@ import axios from 'axios';
           .catch((error) => {
             console.error('Error:', error);
           });
+        console.log("ResponseData: ", responseData);
+        console.log("Response Status: ", responseData.status);
     });
         
     const testbutton = document.getElementById('test-btn');
