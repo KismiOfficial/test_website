@@ -61,7 +61,7 @@ module.exports = async (req, res) => {
       res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS'); // Allowed methods
       res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allowed headers
       res.setHeader('Access-Control-Max-Age', '86400'); // Cache the preflight response for 24 hours
-      return res.status(200).end();
+      res.status(200);
   } else {
     // If the request method isn't one of the above, return a 405 error
     res.status(405).json({ error: 'Method Not Allowed' });
