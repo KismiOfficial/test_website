@@ -18,10 +18,10 @@ import axios from 'axios';
       try{
       
         const data = {
-          email: 'email@example.com',
-          firstname: 'John',
-          lastname: 'Doe',
-          phone: '123-456-7890'
+          email: document.getElementById('email').value,
+          firstname: document.getElementById('firstname').value,
+          lastname: document.getElementById('lastname').value,
+          phone: document.getElementById('phonenumber').value
         };
       
         const response = await fetch('https://test-website-seven-bice.vercel.app/api/sendToHubspot', {
