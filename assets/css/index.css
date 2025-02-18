@@ -14,66 +14,55 @@
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #273d4e; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #ff4a17; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --accent-color: #581a08; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
-:root {
-  --nav-color: #e5eaee;  /* The default color of the main navmenu links */
-  --nav-hover-color: #ff4a17; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #444444; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #ff4a17; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+/*--------------------------------------------------------------
+# Background
+--------------------------------------------------------------*/
+.background {
+  background-color: #FFFFFF;
 }
 
-/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
-
-.light-background {
-  --background-color: #f1f4fa;
-  --surface-color: #ffffff;
-}
-
-.dark-background {
-  --background-color: #000910;
-  --default-color: #ffffff;
-  --heading-color: #ffffff;
-  --surface-color: #28323a;
-  --contrast-color: #ffffff;
-}
-
-/* Smooth scroll */
-:root {
-  scroll-behavior: smooth;
-}
 
 /*--------------------------------------------------------------
-# Global Page Titles & Breadcrumbs
---------------------------------------------------------------*/
-.page-title {
+# Global Header
+
+.header {
+  --background-color: rgba(0, 0, 0, 0);
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
   color: var(--default-color);
-  background-color: var(--background-color);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 160px 0 80px 0;
-  text-align: center;
-  position: relative;
+  background-color: var(--accent-color);
+  padding: 20px 0;
+  transition: all 0.5s;
+  z-index: 997;
+}
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Buttons
+--------------------------------------------------------------*/
+
+.submit-btn,
+.submit-btn:focus {
+  color: #28323a;
+  font-size: 13px;
+  padding: 7px 25px;
+  margin: 0 0 0 30px;
+  border-radius: 4px;
+  transition: 0.3s;
+  text-transform: uppercase;
+  border: 2px solid #28323a;
 }
 
-.page-title:before {
-  content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 30%);
-  position: absolute;
-  inset: 0;
-}
-
-.page-title h1 {
-  font-size: 42px;
-  font-weight: 700;
-  margin-bottom: 10px;
+.submit-btn:hover,
+.submit-btn:focus:hover {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  border-color: var(--accent-color);
 }
 
 /*--------------------------------------------------------------
@@ -148,7 +137,7 @@
   .header .logo {
     order: 1;
   }
-  
+
   .header .submit-btn {
     order: 2;
     margin: 0 15px 0 0;
@@ -175,26 +164,3 @@
 .scrolled .header {
   --background-color: rgba(21, 34, 43, 0.85);
 }
-/*--------------------------------------------------------------
-# Buttons
---------------------------------------------------------------*/
-
-.submit-btn,
-.submit-btn:focus {
-  color: #28323a;
-  font-size: 13px;
-  padding: 7px 25px;
-  margin: 0 0 0 30px;
-  border-radius: 4px;
-  transition: 0.3s;
-  text-transform: uppercase;
-  border: 2px solid #28323a;
-}
-
-.submit-btn:hover,
-.submit-btn:focus:hover {
-  color: var(--contrast-color);
-  background: var(--accent-color);
-  border-color: var(--accent-color);
-}
-
