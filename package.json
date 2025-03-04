@@ -1,30 +1,5 @@
 {
-  "name": "test_website",
-  "source": "index.html",
-  "version": "1.0.0",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel",
-    "build": "parcel build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KismiOfficial/test_website.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/KismiOfficial/test_website/issues"
-  },
-  "homepage": "https://github.com/KismiOfficial/test_website#readme",
-  "description": "",
   "dependencies": {
     "axios": "^1.7.9"
-  },
-  "devDependencies": {
-    "buffer": "^6.0.3",
-    "parcel": "^2.13.3",
-    "process": "^0.11.10"
   }
 }
