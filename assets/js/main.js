@@ -17,7 +17,7 @@
 
   /**
    * Mobile nav toggle
-   */
+   
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
 
   function mobileNavToogle() {
@@ -26,10 +26,10 @@
     mobileNavToggleBtn.classList.toggle('bi-x');
   }
   mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
-
+*/
   /**
    * Hide mobile nav on same-page/hash links
-   */
+   
   document.querySelectorAll('#navmenu a').forEach(navmenu => {
     navmenu.addEventListener('click', () => {
       if (document.querySelector('.mobile-nav-active')) {
@@ -38,10 +38,10 @@
     });
 
   });
-
+*/
   /**
    * Toggle mobile nav dropdowns
-   */
+   
   document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
     navmenu.addEventListener('click', function(e) {
       e.preventDefault();
@@ -50,7 +50,7 @@
       e.stopImmediatePropagation();
     });
   });
-
+*/
   /**
    * Preloader
    */
@@ -179,7 +179,7 @@
 
   /**
    * Navmenu Scrollspy
-   */
+   
   let navmenulinks = document.querySelectorAll('.navmenu a');
 
   function navmenuScrollspy() {
@@ -198,5 +198,6 @@
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
+  */
 
 })();
